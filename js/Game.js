@@ -48,6 +48,7 @@ class Game {
     form.hide();
 
     Player.getPlayerInfo();
+    player.getCarsAtEnd();
     
     if(allPlayers !== undefined){
       //var display_position = 100;
@@ -94,7 +95,9 @@ class Game {
     }
 
     if(player.distance > 4300){
+      player.rank = player.rank + 1;
       GameState = 2;
+      Player.updateCarsAtEnd(player.rank);
     }
 
     drawSprites();
@@ -102,5 +105,6 @@ class Game {
 
   end(){
     console.log("Game Over");
+    console.log(player.rank);
   }
 }
